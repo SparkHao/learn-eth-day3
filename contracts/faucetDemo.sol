@@ -16,4 +16,8 @@ contract Faucet {
        
     }
 
+    function balance() public view returns(uint) {
+        return address(this).balance;
+    }
+
 }
