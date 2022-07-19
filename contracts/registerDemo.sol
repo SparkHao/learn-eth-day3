@@ -7,8 +7,10 @@ contract MappingDemo {
 
     uint sum = 0;
 
-    function register(string memory name) public {
-        require(idmapping[msg.sender] == 0);
+
+    //modifier limit function == require
+    function register(string memory name) public control{
+        // require(idmapping[msg.sender] ==0 );
         address account = msg.sender;
         sum++;
         idmapping[account] = sum;
@@ -22,5 +24,10 @@ contract MappingDemo {
 
     function getNameById(uint id) public view returns(string memory){
         return namemapping[id];
+    }
+
+    modifier control{
+        require(idmapping[msg.sender] ==0 );
+        _;
     }
 }

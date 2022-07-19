@@ -1,0 +1,12 @@
+pragma solidity ^0.8.9;
+
+contract ConstructorDemo {
+
+    uint public a =0;
+    address public owner;
+
+    constructor() public {
+        a = 100;
+        owner = msg.sender;
+    }
+}

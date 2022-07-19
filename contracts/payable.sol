@@ -36,12 +36,13 @@ contract PayableDemo {
         console.log(address(this).balance);
     }
 
-    // function transfer2(address payable addr, uint amount) payable public {
-    //     console.log(msg.value);
-    //     bytes memory payload = abi.encodeWithSignature("set_sender()");
-    //     (bool success, bytes memory returnData) = addr.call.value(1)(payload);
-    //     require(success);
-    // }
+    function transfer2(address payable addr) payable public {
+        console.log(msg.value);
+        console.log(address(this).balance);
+        addr.transfer(msg.value);
+        console.log(address(addr).balance);
+        console.log(address(this).balance);
+    }
 
     // function withdraw() public {
     //     // Uncomment this line to print a log in your terminal

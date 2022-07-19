@@ -11,26 +11,18 @@ async function main() {
   const ONE_YEAR_IN_SECS = 365 * 24 * 60 * 60;
   const unlockTime = currentTimestampInSeconds + ONE_YEAR_IN_SECS;
 
-  const lockedAmount = hre.ethers.utils.parseEther("30");
+  const lockedAmount = hre.ethers.utils.parseEther("1");
 
-  const [owner, addr1] = await ethers.getSigners();
-
-  const Lock = await hre.ethers.getContractFactory("PayableDemo", owner);
-  const lock = await Lock.deploy({ value: lockedAmount });
+  const Lock = await hre.ethers.getContractFactory("modifierDemo3");
+  const lock = await Lock.deploy();
 
   await lock.deployed();
 
   console.log("Lock with 1 ETH deployed to:", lock.address);
-  // console.log("1: ", await lock.pay());
-
-  console.log("balance: ", await lock.getBalance());
-  console.log("balance2: ", await lock.getBalance2(addr1.address));
-  await lock.transfer(addr1.address, 2);
-  console.log("-------------------------------");
-  console.log("balance: ", await lock.getBalance());
-  console.log("balance2: ", await lock.getBalance2(addr1.address));
-
-  await lock.transfer2(addr1.address, {value: 3});
+  // lock.withdraw();
+  console.log("a: ", lock.a());
+  await lock.test();
+  console.log("a: ", lock.a());
 }
 
 // We recommend this pattern to be able to use async/await everywhere
