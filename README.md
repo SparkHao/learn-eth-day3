@@ -30,3 +30,11 @@ function transfer2(address payable addr) payable public {
     addr.transfer(msg.value);
 }
 ```
+
+
+//用metamask转账时需加这段,否则会报out of gas错误
+```code
+    receive() external payable {
+       
+    }
+```
